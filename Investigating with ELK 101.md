@@ -45,5 +45,8 @@ Kibana is an integral component of Elastic stack that is used to display, visual
 
 Starting the attackbox by accessing kibana using machine's IP and credentials provided in tryhackme platform.
 
-## Discover Tab
+## Discover Tab (Task 5)
 
+* Select the index vpn_connections and filter from 31st December 2021 to 2nd Feb 2022. How many hits are returned?
+
+      In top right side There will be Time Filter. In that, select left side from arrow time as `Absolute` and select it as 
