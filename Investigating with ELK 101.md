@@ -81,4 +81,29 @@ Starting the attackbox by accessing kibana using machine's IP and credentials pr
 
        107.14.1.247
        
+       Select Emanda in UserName field in left side pane list. It will filter only Emanda hits and Click "Source_ip" field, it will show the which IP has max hits.
        
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/7d7e44b0-9d56-425e-8028-f4c34e78bff6)
+
+### On 11th Jan, which IP caused the spike observed in the time chart?
+
+      172.201.60.191
+      
+      In the timechart provided, click the chart of Jan 11th. It will gives Jan 11th hits and we can also see the time constraint changed automatically to Jan 11th.
+      
+      Click "Source_ip" field, we can see which IP caused the spike.
+      
+### How many connections were observed from IP 238.163.231.224, excluding the New York state?
+
+      48 hits
+      
+      From "Source_ip" field, Click + on 238.163.231.224 to add the filter that it selects particular IP hits only.
+      
+      From "source_state", Click - on New York to select filter that excludes New York.
+      
+      Both filters are applied together and we can see 48 hits.
+      
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/f3f548e5-3448-4403-af12-82f9a5140892)
+
+## KQL Overview
+
