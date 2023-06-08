@@ -46,3 +46,34 @@
 
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/fc66e151-99c4-46a1-a1f4-3233747eec6e)
 
+* You will see four different directories under payloads: adapters, singles, stagers and stages
+* `Adapters` : An adapter wraps single payloads to convert them into different formats. For example, a normal single payload can be wrapped inside a Powershell adapter, which will make a single powershell command that will execute the payload.
+* `Singles` : Self-contained payloads (add user, launch notepad.exe, etc.) that do not need to download an additional component to run.
+* `Stagers` : Responsible for setting up a connection channel between Metasploit and the target system. Useful when working with staged payloads. “Staged payloads” will first upload a stager on the target system then download the rest of the payload (stage). This provides some advantages as the initial size of the payload will be relatively small compared to the full payload sent at once.
+* `Stages` : Downloaded by the stager. This will allow you to use larger sized payloads.
+
+### Post
+
+* Post modules will be useful on the final stage of the penetration testing process listed above, post-exploitation.
+* `tree -L 1 post/`
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/ff255d5b-a19e-469d-97ee-7e739d96c3ec)
+
+### What is the name of the code taking advantage of a flaw on the target system?
+
+      Exploit
+      
+### What is the name of the code that runs on the target system to achieve the attacker's goal?
+
+      Payload
+      
+### What are self-contained payloads called?
+
+      Singles
+      
+### Is "windows/x64/pingback_reverse_tcp" among singles or staged payload?
+
+      Singles
+      
+## Msfconsole (Task 3)
+
