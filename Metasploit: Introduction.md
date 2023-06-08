@@ -79,3 +79,16 @@
 
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/5b596db3-348d-4ccf-8635-6231a527d55c)
 
+* `Use` command is used to select a module
+* `use exploit/windows/smb/ms17_010_eternalblue` selects the `eternalblue` module
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/9b48fed9-ddc8-47ff-bd4f-6785b347a338)
+
+* `show` command can be used in any context followed by a module type (auxiliary, payload, exploit, etc.) to list available modules.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c859b019-30e2-422e-bc41-f3529b5175e8)
+
+* `info` is not a help menu; it will display detailed information on the module such as its author, relevant sources, etc
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/8a851949-dea2-44e6-947a-190690b9854a)
+
