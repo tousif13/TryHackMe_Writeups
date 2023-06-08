@@ -92,3 +92,19 @@
 
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/8a851949-dea2-44e6-947a-190690b9854a)
 
+* `search` command will search the Metasploit Framework database for modules relevant to the given search parameter. You can conduct searches using CVE numbers, exploit names (eternalblue, heartbleed, etc.), or target system.
+
+* `search type: value` is used to search according to type.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/d02f58a6-e688-421f-9ab8-bfe3f4f43b1c)
+
+### How would you search for a module related to Apache?
+
+      search apache
+      
+### Who provided the auxiliary/scanner/ssh/ssh_login module?
+
+      `info auxiliary/scanner/ssh/ssh_login module`
+      
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/05a0ccc1-a6ee-4a08-a918-fb07268250bf)
+
