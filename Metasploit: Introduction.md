@@ -112,3 +112,49 @@
 
 ## Working with modules (Task 4)
 
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/49b92297-74b9-451b-b0ab-a778ed755b25)
+
+Here we can see, we have to set values for the given parameters needed to use this exploit.
+
+We can set the value using `set` command. For ex, setting `rhosts` parameter here through set command.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c9e99667-522b-4d38-9ded-aac7c279c1b6)
+
+Some of the parameters we use is:
+
+* `RHOSTS`: “Remote host”, the IP address of the target system. A single IP address or a network range can be set. This will support the CIDR (Classless Inter-Domain Routing) notation (/24, /16, etc.) or a network range (10.10.10.x – 10.10.10.y). You can also use a file where targets are listed, one target per line using file:/path/of/the/target_file.txt, as you can see below.
+* `RPORT`: “Remote port”, the port on the target system the vulnerable application is running on.
+* `PAYLOAD`: The payload you will use with the exploit.
+* `LHOST`: “Localhost”, the attacking machine (your AttackBox or Kali Linux) IP address.
+* `LPORT`: “Local port”, the port you will use for the reverse shell to connect back to. This is a port on your attacking machine, and you can set it to any port not used by any other application.
+* `SESSION`: Each connection established to the target system using Metasploit will have a session ID. You will use this with post-exploitation modules that will connect to the target system using an existing connection.
+
+We can unset the values using `unset` command.
+
+If we use `set` command to set a value using a module and you switch to another module, you will need to set the value again. The `setg` command allows you to set the value so it can be used by default across different modules.
+
+After setting the all required parameters, we can launch the module by using `exploit` command. The `exploit -z` command will run the exploit and background the session as soon as it opens.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/101a0b9b-170b-4856-9f51-bc62bd315d5c)
+
+### Sessions
+
+Once a vulnerability has been successfully exploited, a session will be created. This is the communication channel established between the target system and Metasploit.
+
+`sessions` command is used.
+
+### How would you set the LPORT value to 6666?
+      
+      set lport 6666
+
+### How would you set the global value for RHOSTS  to 10.10.19.23 ?
+
+      setg rhosts 10.10.19.23
+
+### What command would you use to clear a set payload?
+
+      unset payload
+      
+### What command do you use to proceed with the exploitation phase?
+
+      exploit
