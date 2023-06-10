@@ -100,11 +100,11 @@ We can use the credentials below to simulate an initial compromise over SMB (Ser
 
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c711f49e-4000-4d26-b453-05d072ba0c2e)
 
+Run `sysinfo` to get the system information like Name,OS,Architecture and Domain etc.
+
 ### What is the computer name?
 
     ACME-TEST
-    
-* Run `sysinfo` to get the system information like Name,OS,Architecture and Domain etc.
 
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/d2117a8d-f7f8-4c1a-89e0-45b48d8ed8f0)
 
@@ -113,3 +113,51 @@ We can use the credentials below to simulate an initial compromise over SMB (Ser
     FLASH
     
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/ebc101ac-9b88-46f5-a216-435efb79bb71)
+
+### What is the name of the share likely created by the user?
+
+        speedster
+        
+* First, we come out of the meterpreter session by using Ctrl+Z
+* It will show the session ID. Note it.
+* As we're looking for user shares search for the modules by using `search shares`.
+* We got the options and `post/windows/gather/enum_shares` options looks apt for our task.
+* Select it and see the options.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/0d3112dc-b119-4e0e-a552-92d50fb1a56a)
+
+* Set the session ID that showed already by using `set SESSION <id>`.
+* `run` the module.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/87fc9b49-373f-4115-91d6-f45bcb5c5ad7)
+
+* We can see the above result consists of 3 shares.
+* Last share's PATH consists of `C:\Shares\speedster` which likely created by user.
+* That's the share created by the user.
+
+### What is the NTLM hash of the jchambers user?
+
+        69596c7aa1e8daee17f8e78870e25a5c
+  
+* Lets get back to the meterpreter session we left at halfway by using command `sessions -i <id>`
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/f5e86740-3760-4040-b90f-0a2543367726)
+
+* To find the has of the user, first we need to migrate to the `LSASS process`.
+* `lsass.exe` is a Windows process that takes care of security policy for the OS. For example, when you logon to a Windows user account or server lsass.exe verifies the logon name and password.
+* Migrating to another process will help Meterpreter interact with it.
+* To migrate it, first we need to find its process ID.
+* `ps` command is used to find the processes id.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/d7caadb6-fc54-46a8-b064-4fc7869b78dd)
+
+* We found the `lsaas.exe` process ID and migrate the process using its ID.
+* `migrate 764` command is used.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/b5b8cc88-0192-4193-aa96-879355ba2840)
+
+* Now we give `hashdump` command to see the hash.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/ede8d370-edd1-49fb-a12d-9cd498040732)
+
+### What is the cleartext password of the jchambers user?
