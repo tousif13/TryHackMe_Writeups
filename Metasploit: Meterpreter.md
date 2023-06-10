@@ -161,3 +161,45 @@ Run `sysinfo` to get the system information like Name,OS,Architecture and Domain
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/ede8d370-edd1-49fb-a12d-9cd498040732)
 
 ### What is the cleartext password of the jchambers user?
+
+        Trustno1
+        
+* As we got the hash of the user already. We use password cracking tools to find out the cleartext password.
+* We can use tools such as John the Ripper or hashcat to find the password from the hash.
+* There is a easy way of finding out password from hash by using `crackstation.net` site.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c1f1cb52-88b2-4627-96d3-c5a2ce59c6cd)
+
+### Where is the "secrets.txt"  file located?
+
+        c: Program Files (x86) Windows Multimedia Platform
+        
+* To search a file, we use command `search -f <filename>`
+* `search -f secrets.txt`
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/e1c73b1f-1397-45b1-826d-c886c2a2349a)
+
+* `cat` command is used to display the contents of the file.
+* `cat c:/Program Files (x86)/Windows Multimedia Platform/secrets.txt`
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/1565e8ad-4fe6-4baf-87ff-02a2a4201318)
+
+### What is the Twitter password revealed in the "secrets.txt" file?
+
+        KDSvbsw3849
+        
+### Where is the "realsecret.txt" file located?
+        
+        c:\inetpub\wwwroot
+
+* `search -f realsecret.txt`
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/a3a4e3d6-8f52-41de-995d-a13eb29d1611)
+
+### What is the real secret?
+
+        The Flash is the fastest man alive
+        
+* `cat "c:/inetpub/wwwroot/secrets.txt"`
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/7300e1c0-f6eb-420d-8d4f-a939eeb258df)
