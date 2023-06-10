@@ -77,3 +77,39 @@ There are so many meterpreter payloads to use. We can decide which version of Me
 * `getsystem` : Attempts to elevate your privilege to that of local system
 * `hashdump` : Dumps the contents of the SAM database
 
+## Post-Exploitation Challenge (Task 5)
+
+* Meterpreter provides several important post-exploitation tools.
+* Meterpreter is also a good base we can use to run post-exploitation modules available on the Metasploit framework. We use `load` command to leverage additional tools such as `Kiwi` or even the whole `Python` language.
+* `load python` & `load kiwi` commands are used.
+
+We can use the credentials below to simulate an initial compromise over SMB (Server Message Block) (using exploit/windows/smb/psexec)
+
+* `Username: ballen`
+* `Password: Password1`
+
+* selecting SMB module by using command `use exploit/windows/smb/psexec`.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/64e9b29e-fb9b-4779-a079-f7f4f6baf5b4)
+
+* We need to provide parameters of `rhosts`,`SMBUser` and `SMBPass`.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/d35f5a25-ac7d-4988-b0c7-f4e9f5e2f29c)
+
+* Give `exploit` or `run` command to run the exploit. We will be directed to meterpreter session.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c711f49e-4000-4d26-b453-05d072ba0c2e)
+
+### What is the computer name?
+
+    ACME-TEST
+    
+* Run `sysinfo` to get the system information like Name,OS,Architecture and Domain etc.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/d2117a8d-f7f8-4c1a-89e0-45b48d8ed8f0)
+
+### What is the target domain?
+
+    FLASH
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/ebc101ac-9b88-46f5-a216-435efb79bb71)
