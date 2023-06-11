@@ -222,4 +222,14 @@ Query :
 
 ### What were the contents of the created ransomware file?
 
+        echo T1486 - Purelocker Ransom Note
+
 * We know already that created ransomware file is `YOUR_FILES.txt`
+* Let's search that in kibana search
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/30bc79f1-c139-4cf9-90c5-4281e46f28d7)
+
+* We got 4 hits.
+* First file that entered is the one which consists of contents. Inspecting the last hit will display us the contents of the ransomware file.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/1859d2ac-ea4f-4761-923b-599ec9d11b7e)
