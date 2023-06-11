@@ -99,3 +99,127 @@ Sigma rules need to be converted to the appropriate SIEM target that is being ut
 
 > Sigmac is a Python-written tool that converts Sigma rules by matching the detection log source field values to the appropriate SIEM backend fields. As part of the Sigma repo (Advisable to clone the repo to get the tool and all the available rules published by the Sigma team), this tool allows for quick and easy conversion of Sigma rules from the command line. Below is a snippet of how to use the tool through its help command, and we shall display the basic syntax of using the tool by converting the AnyDesk rule we have written to the Splunk query.
 
+The main options to be used are:
+
+* `-t`: This sets the targeted SIEM backend you wish to get queries for (Elasticsearch, Splunk, QRadar, ElastAlert).
+* `-c`: This sets the configuration file used for the conversion. The file handles the field mappings between the rule and the target SIEM environment, ensuring that the necessary fields are correct for performing investigations on your environment.
+* `--backend-option`: This allows you to pass a backend configuration file or individual modifications that dictate alert options for the target SIEM environment. For example, in ElasticSearch, we can specify specific field properties to be our primary keyword_field to be searched against, such as fields that end in the `.keyword` or `.security` fields below:
+
+        python3.9 sigmac -t es-qs -c tools/config/winlogbeat.yml --backend-option keyword_field=".keyword" --backend-option analyzed_sub_field_name=".security"
+        
+We can convert our AnyDesk Installation rule  to a Splunk alert as shown below:
+
+        python3.9 sigmac -t splunk -c splunk-windows Process_Creation_AnyDesk_Installation.yml
+        
+### Uncoder.io
+
+Uncoder.IO is an open-source web Sigma converter for numerous SIEM and EDR platforms. It is easy to use as it allows you to copy your Sigma rule on the platform and select your preferred backend application for translation.
+
+We can copy our rule and convert it into different queries of our choice. Below, the rule has been converted into Elastic Query, QRadar and Splunk. You can copy the translation into the SIEM platform to test for any matches.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/85b62547-9e70-48fb-9643-05bc3f6166c1)
+
+We have to give the yaml file we did for the AnyDesk Installation Sigma rule as input and convert it as elastic query through `uncoder.io`
+
+We will get the output query :
+
+        (process.command_line.text:"*\-\-install*" AND process.command_line.text:"*\-\-start\-with\-win*" AND process.working_directory.text:"*C\:\\ProgramData\\AnyDesk.exe*")
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/03565285-d168-4c8d-b1e7-d97fcd1049fe)
+
+Now we use it to analyse log data from the launched machine on the Kibana dashboard
+
+We have to remove `\` and `*` as it will show errors for the part of regex.
+
+After removing those, the Elastic query will be:
+
+        (process.command_line.text:--install AND process.command_line.text:--start-with-win AND process.working_directory.text:C\:\\ProgramData\\AnyDesk.exe)
+
+Now feed it to the kibana search space.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/0c409783-f673-4561-b34e-1751a118a790)
+
+### What command line tool is used to convert Sigma rules?
+
+        Sigmac
+        
+### At what time was the AnyDesk installation event created? [MMM DD, YYYY @ HH:MM:SS]
+
+        Jun 28, 2022 @ 22:19:00
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/b676242b-6f4c-41e7-84e0-619d234f41a7)
+
+### What version of AnyDesk was installed?
+
+        7.0.10
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c6837558-a3da-465e-905f-8593dfc6342b)
+
+## Practical Scenario (Task 6)
+
+Your organisation, Aurora, has recently been experiencing unusual activities on some of the machines on the network. Amongst these activities, the IT Manager noted that an unknown entity created some scheduled tasks on one of the machines and that a ransomware activity was also recorded.
+
+The SOC Manager has approached you to find ways of identifying these activities from the logs collected on the environment. It would be best if you used Sigma rules to set your detection parameters and perform search queries through the Kibana dashboard.
+
+To complete the task, you will require two Sigma rules processed into ElasticSearch to query for the scheduled task and the ransomware events. Below are tips to construct a good rule for the task:
+
+* For the Scheduled Task, understand that it is a process creation event.
+* The rule's detection variables should contain image and commandline arguments.
+* You may choose to exclude SYSTEM accounts from the query.
+* For the ransomware activity, you'll look for a created file ending with .txt.
+* The file creation process would be run via cmd.exe.
+* Change the default time window on Kibana from the default last 30 days to last 1 year (or ensure it encompasses 2022).
+
+The query of above task will be:
+
+        (process.executable.text:"\schtasks.exe" AND process.command_line.text: "*schtasks*" AND process.command_line.text: *Create*)
+        
+### To detect the creation of the scheduled task, what detection value would be appropriate for the Sigma rule?
+
+        schtasks.exe
+        
+### What was the name of the scheduled task created?
+
+        spawn
+        
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/17a4ae27-4fa9-4e96-bb5b-cbffb3032cd3)
+
+In the above command, it will create task called spawn. Thus, the name of the scheduled task is `spawn`
+
+### What time is this task meant to run?
+
+        20:10
+        
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/dff689af-1455-4705-95d9-687e51fc8af1)
+
+Time is also mentioned there when the task is created.
+
+### To detect ransomware activity, what logsource category would be appropriate for the Sigma rule?
+
+        file_event
+
+* To detect this logsource category, we need to refer the Sigma taxonomy.
+* https://github.com/SigmaHQ/sigma-specification/blob/main/Taxonomy_specification.md
+* Look for Event_ID : 11
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/3e54976e-94cb-4368-928a-dd61a48bd6f7)
+
+### What is the name of the created file?
+
+        YOUR_FILES.TXT
+
+Query :
+
+    (process.executable.text:"\cmd.exe" AND file.path.text:*.txt)
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/5204b23e-e808-4c65-8e2e-8770ec42f46e)
+
+### What was the event code associated with the activity?
+
+        11
+        
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/9e64037a-caad-4028-a71c-7c5e04f7788a)
+
+### What were the contents of the created ransomware file?
+
+* We know already that created ransomware file is `YOUR_FILES.txt`
