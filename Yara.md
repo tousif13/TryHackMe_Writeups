@@ -47,3 +47,20 @@ where
 ### Inspect the actual Yara file that flagged file 1. Within this rule, how many strings are there to flag this file?
 
     1
+
+### Scan file 2. Does Loki detect this file as suspicious/malicious or benign?
+
+    benign
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/dd45f45b-3b69-45d0-ad53-dc1a617172f8)
+
+### Inspect file 2. What is the name and version of this web shell?
+
+    b374k 3.2.3
+
+![file2ver2](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/a0651e8b-3e31-4748-a365-0a901cc35f33)
+
+![file2ver](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/62737f80-7f72-467a-9441-848efe6543be)
+
+## Creating Yara rules with yarGen (Task 9)
+
