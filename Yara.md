@@ -108,3 +108,50 @@ To run yarGen :
 
     700kb
 
+## Valhalla (Task 10)
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/619564fa-ff55-4282-a651-700d7fcc044b)
+
+### Enter the SHA256 hash of file 1 into Valhalla. Is this file attributed to an APT group?
+
+    Yay
+
+    5479f8cd1375364770df36e5a18262480a8f9d311e8eedb2c2390ecb233852ad
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c6b231dc-a9b8-4a31-afd2-aeb97ebb37cd)
+
+### Do the same for file 2. What is the name of the first Yara rule to detect file 2?
+
+    53fe44b4753874f079a936325d1fdc9b1691956a29c3aaf8643cdbd49f5984bf
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/b01565f5-e342-4bc7-9bd8-6dc1c7d21f61)
+
+### Examine the information for file 2 from Virus Total (VT). The Yara Signature Match is from what scanner?
+
+    THOR APT Scanner
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/0f203c6b-8ff5-4d81-8e53-0a6a9cb72dd3)
+
+### Enter the SHA256 hash of file 2 into Virus Total. Did every AV detect this as malicious?
+
+    Nay
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/67a9faf5-59ad-49bd-8763-50d3afb7d00b)
+
+### Besides .PHP, what other extension is recorded for this file?
+
+    .exe
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/f8abeb30-f1c2-44b1-9693-12af76c12087)
+
+### What JavaScript library is used by file 2?
+
+    zepto
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/3afa97a8-339f-4943-bb0e-a1217d4d9e8b)
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/f5a81444-5488-4dd8-97fe-d18117fb1298)
+
+### Is this Yara rule in the default Yara file Loki uses to detect these type of hack tools?
+
+    Nay
