@@ -64,3 +64,47 @@ where
 
 ## Creating Yara rules with yarGen (Task 9)
 
+To run yarGen :
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/65e9be28-f7e2-4320-bd83-c53a0a571ce0)
+
+![yargen](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/da12f7a4-553f-4121-82aa-960e11f2218d)
+
+### From within the root of the suspicious files directory, what command would you run to test Yara and your Yara rule against file 2?
+
+    yara files2.yar file2/1ndex.php
+
+### Did Yara rule flag file 2?
+
+    Yay
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/640b66b1-2f56-4d01-90d9-5d1b767db296)
+
+### Copy the Yara rule you created into the Loki signatures directory
+
+    cp file2.yar ~/tools/Loki/signature-base/yara
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/2f33b2de-3bbb-487e-956f-4b373adf7ff9)
+
+### Test the Yara rule with Loki, does it flag file 2? (Yay/Nay)
+
+    Yay
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/4e1290a6-3dcb-4a33-ae81-64f3af4ea2f9)
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/1c1c1f88-b7ea-45e3-8204-cac18078d35d)
+
+### What is the name of the variable for the string that it matched on?
+
+    Zepto
+
+### Inspect the Yara rule, how many strings were generated?
+
+    20
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/bb6b215a-1ac8-491b-9882-4b1a09185be0)
+
+### One of the conditions to match on the Yara rule specifies file size. The file has to be less than what amount?
+
+    700kb
+
