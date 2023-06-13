@@ -43,3 +43,7 @@ where
 ### What is the name and version of this hack tool?
 
     b374k 2.2
+
+### Inspect the actual Yara file that flagged file 1. Within this rule, how many strings are there to flag this file?
+
+    1
