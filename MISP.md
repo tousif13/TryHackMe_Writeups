@@ -17,3 +17,29 @@ Information sharing follows a distributed model, with supported closed, semi-pri
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/21eaa4c1-8daa-43cc-8a44-7c553b715a35)
 
 ## Scenario Event (Task 5)
+
+> CIRCL (Computer Incident Respons Center Luxembourg) published an event associated with PupyRAT infection. Your organisation is on alert for remote access trojans and malware in the wild, and you have been tasked to investigate this event and correlate the details with your SIEM. Use what you have learned from the room to identify the event and complete this task.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/064d05e4-d41f-406f-91a3-174b9ec0fa4b)
+
+### What event ID has been assigned to the PupyRAT event?
+
+      1146
+
+### The event is associated with the adversary gaining ______ into organisations.
+
+      Remote Access
+
+### What IP address has been mapped as the PupyRAT C2 Server
+
+      89.107.62.39
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/576415cd-a258-45a1-a93b-58e47af33512)
+
+### From the Intrusion Set Galaxy, what attack group is known to use this form of attack?
+
+      Magic Hound
+
+### There is a taxonomy tag set with a Certainty level of 50. Which one is it?
+
+      OSINT
