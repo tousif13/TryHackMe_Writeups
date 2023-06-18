@@ -141,3 +141,87 @@ PhishTool conveniently grabs all the pertinent information we'll need regarding 
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/266e359e-892f-4cad-b387-9471b60f9740)
 
 ## Phishing Case (Task 8)
+
+`Task` : https://app.any.run/tasks/8bfd4c58-ec0d-4371-bfeb-52a334b69f59
+
+### What does AnyRun classify this email as?
+
+    Suspicious Activity
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/90b98b1a-f5b0-4772-a85f-5452d9800e06)
+
+### What is the name of the PDF file?
+
+    payment-updateid.pdf
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/90b98b1a-f5b0-4772-a85f-5452d9800e06)
+
+### What is the SHA 256 hash for the PDF file?
+
+    cc6f1a04b10bcb168aeec8d870b97bd7c20fc161e8310b5bce1af8ed420e2c24
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/29e7e47b-4b19-4b3f-8ddf-8eb0f22c31d9)
+
+### What two IP addresses are classified as malicious? Defang the IP addresses. (answer: IP_ADDR,IP_ADDR)
+
+    2[.]16[.]107[.]83,2[.]16[.]107[.]24
+    
+* Click on `Text Report`
+* See under `connections` tab
+  
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/e133decc-3f9e-41b0-ad17-59b9bb87e518)
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/155e0f37-8cc4-46f8-9601-099c130dc6d8)
+
+### What Windows process was flagged as Potentially Bad Traffic?
+
+    svchost.exe
+
+* See under `Threats` in the text report.
+  
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/9983b9fb-50e8-4a8a-ba4c-8d1061293462)
+
+## Phishing Case 3 (Task 9)
+
+`Task` : https://app.any.run/tasks/82d8adc9-38a0-4f0e-a160-48a5e09a6e83
+
+### What is this analysis classified as?
+
+    Malicious Activity
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/981954e0-9568-4128-9e24-0d1b0594059d)
+
+### What is the name of the Excel file?
+
+    CBJ200620039539.xlsx
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/981954e0-9568-4128-9e24-0d1b0594059d)
+
+### What is the SHA 256 hash for the file?
+
+    5f94a66e0ce78d17afc2dd27fc17b44b3ffc13ac5f42d3ad6a5dcfb36715f3eb
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/ea3f8ed3-72d7-44fe-9cff-549704c3c604)
+
+### What domains are listed as malicious? Defang the URLs & submit answers in alphabetical order. (answer: URL1,URL2,URL3)
+
+    biz9holdings[.]com,findresults[.]site, ww38[.]findresults[.]site
+
+* Open `Text Report`
+* See under `connections`
+  
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/387811bc-11e9-4207-b043-19635ba28534)
+
+### What IP addresses are listed as malicious? Defang the IP addresses & submit answers from lowest to highest. (answer: IP1,IP2,IP3)
+
+    204[.]11[.]56[.]48,103[.]224[.]182[.]251,75[.]2[.]11[.]242,
+
+* See the IP under connections.
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/387811bc-11e9-4207-b043-19635ba28534)
+
+### What vulnerability does this malicious attachment attempt to exploit?
+
+    CVE-2017-11882
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/c80c7fef-da34-4415-a4ec-316b44273df6)
+
