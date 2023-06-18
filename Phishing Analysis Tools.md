@@ -65,3 +65,79 @@ There are many tools available to help us with this, but we'll focus on two prim
 
 ## Malware Sandbox (Task 5)
 
+Luckily as Defenders, we don't need to have malware analysis skills to dissect and reverse engineer a malicious attachment to understand the malware better.
+
+There are online tools and services where malicious files can be uploaded and analyzed to better understand what the malware was programmed to do. These services are known as malware sandboxes
+
+For instance, we can upload an attachment we obtained from a potentially malicious email and see what URLs it attempts to communicate with, what additional payloads are downloaded to the endpoint, persistence mechanisms, Indicators of Compromise (IOCs), etc
+
+`Any.Run`: https://app.any.run/
+
+> Analyze a network, file, module, and the registry activity. Interact with the OS directly from a browser. See the feedback from your actions immediately
+
+`Hybrid Analysis`: https://www.hybrid-analysis.com/
+
+> This is a free malware analysis service for the community that detects and analyzes unknown threats using a unique Hybrid Analysis technology.
+
+`Joe Security`: https://www.joesecurity.org/
+
+> Joe Sandbox empowers analysts with a large spectrum of product features. Among them: Live Interaction, URL Analysis & AI based Phishing Detection, Yara and Sigma rules support, MITRE ATT&CK matrix, AI based malware detection, Mail Monitor, Threat Hunting & Intelligence, Automated User Behavior, Dynamic VBA/JS/JAR instrumentation, Execution Graphs, Localized Internet Anonymization and many more
+
+## PhishTool (Task 6)
+
+`PhishTool`: phishtool.com
+
+> Be you a security researcher investigating a new phish-kit, a SOC analyst responding to user reported phishing, a threat intelligence analyst collecting phishing IoCs or an investigator dealing with email-born fraud.
+
+PhishTool combines threat intelligence, OSINT, email metadata and battle tested auto-analysis pathways into one powerful phishing response platform. Making you and your organisation a formidable adversary - immune to phishing campaigns that those with lesser email security capabilities fall victim to
+
+PhishTool conveniently grabs all the pertinent information we'll need regarding the email.
+
+* Email sender
+* Email recipient
+* Timestamp
+* Originating IP and Reverse DNS lookup
+
+### Look at the Strings output. What is the name of the EXE file?
+
+        #454326_PDF.exe
+
+## Phishing Case 1 (Task 7)
+
+* Open the `Phish3Case1.eml` file that consists of email information.
+* Open the file in app.phishtool.com
+* Analyze the email information
+
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/a2e0ec5a-c24e-4492-b19a-d50e26d63443)
+
+### What brand was this email tailored to impersonate?
+
+    Netflix
+
+### What is the From email address?
+
+    JGQ47wazXe1xYVBrkeDg-JOg7ODDQwWdR@JOg7ODDQwWdR-yVkCaBkTNp.gogolecloud.com
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/87d3307a-3298-45d3-9fa4-a80eb29f302f)
+
+### What is the originating IP? Defang the IP address.
+
+    209[.]85[.]167[.]226
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/7fc26d54-a5e0-436f-8109-af3a732d67e3)
+
+### From what you can gather, what do you think will be a domain of interest? Defang the domain.
+
+* Return-Path defines how and where bounced emails will be processed. For this reason, the domain in the email address is the requested domain.
+
+    etekno[.]xyz
+  
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/2d4286ea-b0ce-4b00-b106-68b953170b36)
+
+### What is the shortened URL? Defang the URL.
+
+    hxxps[://]t[.]co/yuxfZm8KPg?amp=1
+    
+![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/266e359e-892f-4cad-b387-9471b60f9740)
+
+## Phishing Case (Task 8)
