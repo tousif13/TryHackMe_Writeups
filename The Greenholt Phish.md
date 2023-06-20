@@ -91,7 +91,9 @@ We can see the filename while saving.
 ### What is the attachments file size?
 
     400.26 KB
-    
+
+Enter the hash retreived from previous task in the `VirusTotal`.
+
 ![image](https://github.com/tousif13/TryHackMe_Writeups/assets/33444140/1e31d45a-b338-49b6-80fe-8ad32fa27c09)
 
 ### What is the actual file extension of the attachment?
