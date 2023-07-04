@@ -10,5 +10,5 @@
 * `Users` - Users are one of the objects known as security principals, meaning that they can be authenticated by the domain and can be assigned privileges over resources like files or printers
 * `People`: users will generally represent persons in your organisation that need to access the network, like employees.
 * `Services`: you can also define users to be used by services like IIS or MSSQL. Every single service requires a user to run, but service users are different from regular users as they will only have the privileges needed to run their specific service.
-
-* 
+* `Machines` - Machines are another type of object within Active Directory; for every computer that joins the Active Directory domain, a machine object will be created. Machines are also considered "security principals" and are assigned an account just as any regular user
+* `Security Groups` - 
